@@ -15,7 +15,7 @@ kernel_Correlation_rearrange = '''
 		const int n,
 		const float* input,
 		float* output
-	) {
+	) { 
 	  int intIndex = (blockIdx.x * blockDim.x) + threadIdx.x;
 	  if (intIndex >= n) {
 	    return;
