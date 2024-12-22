@@ -29,6 +29,12 @@ class CustomFlowDataset(torch.utils.data.Dataset):
         target_data = self.targets[idx]  # Shape (2, 120, 120)
         T, H, W = input_data.shape
         
+
+        # Apply denoising to input data
+        if self.use_denoising != 'none':
+            input_data = denoise_piv_images(input_data, self.use_denoising, **self.denoising_kwargs)
+            
+            
         if self.img_size != None and self.img_size != (H, W):
             
             input_data = np.array([
@@ -39,8 +45,5 @@ class CustomFlowDataset(torch.utils.data.Dataset):
                 cv2.resize(img.numpy(), self.img_size, interpolation=cv2.INTER_LINEAR)
                 for img in target_data
             ])
-
-        # Apply denoising to input data
-        if self.use_denoising != 'none':
-            input_data = denoise_piv_images(input_data, self.use_denoising, **self.denoising_kwargs)
+            
         return input_data, target_data  

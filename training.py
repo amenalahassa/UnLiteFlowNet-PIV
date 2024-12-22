@@ -117,7 +117,7 @@ def test_train(args=None):
 
     if new_train:
         
-        if args.use_pretrained:
+        if args.use_pretrained == 1:
             model_save_name = args.model_save_name
             PATH = F"./models/{model_save_name}"
             checkpoint = torch.load(PATH)
@@ -160,7 +160,7 @@ if __name__ == "__main__":
     parser.add_argument('--experiment_name', type=str, help='Name of the experiment', default='UnLiteFlowNet-PIV')
     parser.add_argument('--use_denoising', type=str, help='Denoising method', default='gaussian')
     parser.add_argument('--normalise', type=int, default=1)
-    parser.add_argument('--use_pretrained', type=bool, help='Use pretrained model', default=False)
+    parser.add_argument('--use_pretrained', type=int, help='Use pretrained model', default=0)
     parser.add_argument('--new_train', type=bool, help='New train', default=True)
 
     args = parser.parse_args()
