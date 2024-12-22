@@ -11,7 +11,7 @@ def EPE(input_flow, target_flow, mean=True):
     else:
         return EPE_map.sum() / batch_size
 
-
+    
 def realEPE(output, target):
     b, _, h, w = target.size()
     upsampled_output = F.interpolate(output, (h, w),

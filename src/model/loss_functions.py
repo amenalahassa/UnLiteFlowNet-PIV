@@ -23,11 +23,13 @@ def multiscaleUnsupervisorError(tensorFlowForward,
         weights = [12.7, 5.5, 4.35, 3.9, 3.4, 1.1]
     assert (len(weights) == len(tensorFlowForward))
     assert (len(weights) == len(tensorFlowBackward))
+    # print(weights, len(tensorFlowForward), tensorFlowForward.shape)
 
     loss = 0
     for i, weight in enumerate(weights):
 
         scale_factor = 1 / (2**i)
+        # print(tensorFlowForward[-1 - i].shape, 'ok', i)
         loss += weight * one_scale(tensorFirst, tensorSecond,
                                    tensorFlowForward[-1 - i] * scale_factor,
                                    tensorFlowBackward[-1 - i] * scale_factor)
@@ -63,6 +65,7 @@ def charbonnierLoss(x, alpha=0.45, beta=1.0, epsilon=0.001):
 # photometric difference
 def warpLoss(tensorFirst, tensorSecond, tensorFlow):
     """Differentiable Charbonnier penalty function"""
+    # print(tensorFlow.shape)
     tensorDifference = tensorFirst - Backward(tensorInput=tensorSecond,
                                               tensorFlow=tensorFlow)
     return charbonnierLoss(tensorDifference, beta=255.0)
@@ -71,6 +74,7 @@ def warpLoss(tensorFirst, tensorSecond, tensorFlow):
 def bidirectionalDataLoss(tensorFirst, tensorSecond, tensorFlowForward,
                           tensorFlowBackward):
     """Compute bidirectional photometric loss"""
+    # print(tensorFirst.shape, tensorSecond.shape)
     return warpLoss(tensorFirst, tensorSecond, tensorFlowForward) + warpLoss(
         tensorSecond, tensorFirst, tensorFlowBackward)
 

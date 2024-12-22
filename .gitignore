@@ -1,0 +1,8 @@
+**/.ipynb_checkpoints/
+sample_data/cropped/
+sample_data/datas/
+sample_data/mix/
+sample_data/whole/
+checkpoints/
+**/__pycache__/
+wandb/

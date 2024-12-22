@@ -256,7 +256,7 @@ class Network(torch.nn.Module):
                             inplace=False))
 
                 # end
-
+                
                 return (tensorFlow if tensorFlow is not None else
                         0.0) + self.moduleMain(tensorCorrelation)
 
@@ -557,7 +557,8 @@ class Network(torch.nn.Module):
 
 
 # Estimate the flow
-def estimate(tensorFirst, tensorSecond, model, train=False):
+def estimate(tensorFirst, tensorSecond, model, train=False, downscaleFactor=32.0):
+    # downscaleFactor = 32.0 for 256 image size as input
     assert (tensorFirst.size(3) == tensorSecond.size(3))
     assert (tensorFirst.size(2) == tensorSecond.size(2))
 
@@ -567,8 +568,9 @@ def estimate(tensorFirst, tensorSecond, model, train=False):
     tensorPreprocessedFirst = tensorFirst.view(-1, 1, intHeight, intWidth)
     tensorPreprocessedSecond = tensorSecond.view(-1, 1, intHeight, intWidth)
 
-    intPreprocessedWidth = int(math.floor(math.ceil(intWidth / 32.0) * 32.0))
-    intPreprocessedHeight = int(math.floor(math.ceil(intHeight / 32.0) * 32.0))
+    intPreprocessedWidth = int(math.floor(math.ceil(intWidth / downscaleFactor) * downscaleFactor))
+    intPreprocessedHeight = int(math.floor(math.ceil(intHeight / downscaleFactor) * downscaleFactor))
+    # print(intPreprocessedWidth, intPreprocessedHeight)
 
     tensorPreprocessedFirst = torch.nn.functional.interpolate(
         input=tensorPreprocessedFirst,
@@ -589,6 +591,7 @@ def estimate(tensorFirst, tensorSecond, model, train=False):
 
     tensorFlow[:, 0, :, :] *= float(intWidth) / float(intPreprocessedWidth)
     tensorFlow[:, 1, :, :] *= float(intHeight) / float(intPreprocessedHeight)
+    
     if train:
         return raw_output + [tensorFlow]
     else:

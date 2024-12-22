@@ -1,0 +1,82 @@
+python training.py --input_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas/noisy_images_data_H017.npy \
+                   --target_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas/data_ground_truth_H017.npy \
+                   --model_save_name UnLiteFlowNet \
+                   --wandb 69b3acb9a6d852c2189549992a6b4b30f8c72019 \
+                   --experiment_name UnLiteFlowNet-PIV \
+                   --use_denoising none
+                   
+                   
+python training.py --data_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas \
+                   --model_save_name UnLiteFlowNet \
+                   --wandb 69b3acb9a6d852c2189549992a6b4b30f8c72019 \
+                   --experiment_name UnLiteFlowNet-PIV \
+                   --use_denoising none
+                   
+python training.py --data_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas \
+                   --model_save_name UnLiteFlowNet \
+                   --wandb 69b3acb9a6d852c2189549992a6b4b30f8c72019 \
+                   --experiment_name UnLiteFlowNet-PIV \
+                   --use_denoising none
+                   --use_pretrained True
+                   
+                   
+python training.py --data_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas \
+                   --model_save_name UnLiteFlowNet \
+                   --wandb 69b3acb9a6d852c2189549992a6b4b30f8c72019 \
+                   --experiment_name UnLiteFlowNet-PIV \
+                   --use_denoising gaussian
+
+
+python training.py --input_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas/noisy_images_data_SQG.npy \
+                   --target_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas/data_ground_truth_SQG.npy \
+                   --model_save_name UnLiteFlowNet \
+                   --wandb 69b3acb9a6d852c2189549992a6b4b30f8c72019 \
+                   --experiment_name UnLiteFlowNet-PIV \
+                   --use_denoising none
+                   
+                   
+python training.py --data_path /notebooks/UnLiteFlowNet-PIV/sample_data/mix \
+                   --model_save_name UnLiteFlowNet \
+                   --wandb 69b3acb9a6d852c2189549992a6b4b30f8c72019 \
+                   --experiment_name UnLiteFlowNet-PIV \
+                   --use_denoising none
+                   
+python misc.py --input_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas/noisy_images_data_SQG.npy \
+                   --target_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas/data_ground_truth_SQG.npy \
+                   --case 0
+                   
+python misc.py --input_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas/noisy_images_data_H017.npy \
+                   --target_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas/data_ground_truth_H017.npy \
+                   --case 1
+                   
+                   
+python training.py --input_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas/noisy_images_data_SQG_Cropped_120x120.npy \
+                   --target_path /notebooks/UnLiteFlowNet-PIV/sample_data/datas/data_ground_truth_SQG_Cropped_120x120.npy \
+                   --model_save_name UnLiteFlowNet \
+                   --wandb 69b3acb9a6d852c2189549992a6b4b30f8c72019 \
+                   --experiment_name UnLiteFlowNet-PIV \
+                   --use_denoising none
+                   
+                   
+python training.py --input_path /notebooks/UnLiteFlowNet-PIV/sample_data/whole/noisy_images_data_SQG.npy \
+                   --target_path /notebooks/UnLiteFlowNet-PIV/sample_data/whole/data_ground_truth_SQG.npy \
+                   --model_save_name UnLiteFlowNet \
+                   --wandb 69b3acb9a6d852c2189549992a6b4b30f8c72019 \
+                   --experiment_name UnLiteFlowNet-PIV \
+                   --use_denoising none
+                   
+                   
+python training.py --input_path /notebooks/UnLiteFlowNet-PIV/sample_data/whole/noisy_images_data_SQG.npy \
+                   --target_path /notebooks/UnLiteFlowNet-PIV/sample_data/whole/data_ground_truth_SQG.npy \
+                   --model_save_name UnLiteFlowNet \
+                   --wandb 69b3acb9a6d852c2189549992a6b4b30f8c72019 \
+                   --experiment_name UnLiteFlowNet-PIV \
+                   --use_denoising gaussian
+                   
+                   
+python training.py --input_path /notebooks/UnLiteFlowNet-PIV/sample_data/whole/noisy_images_data_H017_Padded_120x120.npy \
+                   --target_path /notebooks/UnLiteFlowNet-PIV/sample_data/whole/data_ground_truth_H017_Padded_120x120.npy \
+                   --model_save_name UnLiteFlowNet \
+                   --wandb 69b3acb9a6d852c2189549992a6b4b30f8c72019 \
+                   --experiment_name UnLiteFlowNet-PIV \
+                   --use_denoising none
